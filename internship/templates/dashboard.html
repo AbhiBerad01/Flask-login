@@ -1,0 +1,41 @@
+{% if current_user.is_authenticated %}
+{% extends "basic.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+
+<div class="container my-3">
+    <div class="name text-center"><h1>Welcome {{name}}</h1></div>
+    <div class="table my-3">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">sr.no</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+       
+        {% for i in range(0,5) %}
+        <tbody>
+          <tr>
+            <th scope="row">{{i+1}}</th>
+            <td>{{users[i].name}}</td>
+            <td>{{users[i].email}}</td>
+          </tr>
+        </tbody>
+
+        {% endfor %}
+   
+      </table>
+    </div>
+    <button class="btn btn-primary" id="load">Load 5</button>
+</div>
+
+
+{% endblock %}
+
+{% endif %}
+    {% if not current_user.is_authenticated %}
+<h1>404 Page not Found</h1>
+    {% endif %}
+    

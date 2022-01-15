@@ -1,0 +1,23 @@
+{% if current_user.is_authenticated %}
+{% extends "basic.html" %}
+{% block title %}Uploader{% endblock %}
+{% block body %}
+<div class="container my-3">
+    <form class="my-3" action="/uploader" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Upload Image</label>
+            <input type="file" name="file1">
+          </div>
+          <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <input type="text" class="form-control" name="desc" id="desc" aria-describedby="emailHelp">
+          </div>
+          <button class="btn btn-primary">Upload</button>
+    </form>
+</div>
+
+{% endblock %}
+{% endif %}
+    {% if not current_user.is_authenticated %}
+<h1>404 Page not Found</h1>
+    {% endif %}
